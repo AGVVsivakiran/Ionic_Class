@@ -3,6 +3,7 @@ FULL Screen and avoid Keyboard overlapping
 Plugin for full screen 
 ----------------------
 "@boengli/capacitor-fullscreen": "^0.0.19"
+"@capacitor/keyboard": "7.0.1",
 
 app.compontent.ts
 ------------------
