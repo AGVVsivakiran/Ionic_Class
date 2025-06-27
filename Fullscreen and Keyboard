@@ -1,0 +1,55 @@
+FULL Screen and avoid Keyboard overlapping
+-------------------------------------------
+Plugin for full screen 
+----------------------
+"@boengli/capacitor-fullscreen": "^0.0.19"
+
+app.compontent.ts
+------------------
+import { Keyboard, KeyboardInfo } from '@capacitor/keyboard';
+import { Fullscreen } from '@boengli/capacitor-fullscreen';
+  //  keyboard resize for input field
+  window.addEventListener('ionKeyboardDidShow', (event: any) => {
+    const { keyboardHeight } = event;
+    console.log('Legacy keyboard height:', keyboardHeight);
+  });
+
+  window.addEventListener('ionKeyboardDidHide', () => {
+    console.log('Legacy keyboard hidden');
+  });
+
+  // Capacitor keyboard listeners
+  Keyboard.addListener('keyboardWillShow', (event: KeyboardInfo) => {
+    const { keyboardHeight } = event;
+    document.body.style.paddingBottom = (keyboardHeight + 30) + 'px';
+  });
+
+  Keyboard.addListener('keyboardWillHide', () => {
+    document.body.style.paddingBottom = '0px';
+  });
+}
+
+capacitor.config.ts
+-------------------
+import type { CapacitorConfig } from '@capacitor/cli';
+import { KeyboardResize, KeyboardStyle } from '@capacitor/keyboard';
+
+const config: CapacitorConfig = {
+  appId: 'com.vab.MannaFoodDeliveryBoy',
+  appName: 'MannaFoodDeliveryBoy',
+  webDir: 'www',
+  plugins: {
+    StatusBar: {
+      overlaysWebView: false,
+      style: "DARK",
+      backgroundColor: "GREY",
+    },
+    Keyboard: {
+      resize: KeyboardResize.Ionic,
+      style: KeyboardStyle.Dark,
+      resizeOnFullScreen: true,
+    },
+  },
+};
+
+export default config;
