@@ -62,3 +62,12 @@ const config: CapacitorConfig = {
 };
 
 export default config;
+
+
+css
+---
+In Ionic, --keyboard-offset is a custom CSS variable used mainly by components (like ion-content, ion-footer, etc.) to create spacing when the keyboard appears.
+
+ion-content {
+  --keyboard-offset: 2rem;
+}
