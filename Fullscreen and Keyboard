@@ -10,6 +10,7 @@ import { Keyboard, KeyboardInfo } from '@capacitor/keyboard';
 import { Fullscreen } from '@boengli/capacitor-fullscreen';
 
   ngOnInit() {
+//full screen
   Fullscreen.activateImmersiveMode()
     .then(() => console.log('Fullscreen enabled'))
     .catch(err => console.error('Error enabling fullscreen:', err));
